@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-export const ContactForm = ({ onSubmit }) => {
+export default function ContactForm({ onSubmit }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -25,19 +25,15 @@ export const ContactForm = ({ onSubmit }) => {
     }
   };
 
-  // const onSubmit = event => {
-  //   event.preventDefault();
-  //   this.props.onSubmit();
-  //   reset();
-  // };
-
-  // const reset = () => {
-  //   setName('');
-  //   setNumber('');
-  // };
+  const formSubmit = event => {
+    event.preventDefault();
+    onSubmit({ name, number });
+    setName('');
+    setNumber('');
+  };
 
   return (
-    <form className={css.contactForm} onSubmit={onSubmit}>
+    <form className={css.contactForm} onSubmit={formSubmit}>
       <h2>Name</h2>
       <label htmlFor={formId}>
         <input
@@ -68,7 +64,7 @@ export const ContactForm = ({ onSubmit }) => {
       <button>Add contact</button>
     </form>
   );
-};
+}
 
 ContactForm.propTypes = {
   formSubmit: PropTypes.func,
@@ -77,5 +73,3 @@ ContactForm.propTypes = {
   onChange: PropTypes.func,
   id: PropTypes.string,
 };
-
-export default ContactForm;

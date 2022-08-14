@@ -8,16 +8,15 @@ import Filter from './Filter/Filter';
   const [contacts, setContacts] = useState(() => JSON.parse(localStorage.getItem('contacts')) ?? []);
   const [filter, setFilter] = useState('');
   
-    const addContact = event => {
-      console.log(event)
-      event.preventDefault();
-    const dataContact = {
+    const addContact = data => {
+      console.log(data)
+      const dataContact = {
       id: nanoid(),
-      name: event.target.name.value,
-      number: event.target.number.value,
+      name: data.name,
+      number: data.number,
     }
     
-    const repeatContacts = contacts.find(elem => elem.name === event.target.name.value);
+    const repeatContacts = contacts.find(elem => elem.name === data.name);
    
     if (repeatContacts) {
       alert(`${repeatContacts.name} is already in contacts`)
