@@ -1,0 +1,15 @@
+.li {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin: 5px;
+}
+
+.p {
+    margin-right: 20px;
+}
+
+.button {
+    margin-left: 20px;
+    height: 30px;
+}
